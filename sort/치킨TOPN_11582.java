@@ -1,23 +1,23 @@
 import java.io.*;
 import java.util.*;
 
-public class Ä¡Å²TOPN_11582 {
+public class ì¹˜í‚¨TOPN_11582 {
 	
 	static int arr[];
 	static int tmp[];
 	static int n, k;
 	
-	//ÇÕº´ ÇÔ¼ö (µÎ°³ÀÇ Á¤·ÄµÈ ºÎºĞ¹è¿­À» ÇÏ³ªÀÇ Á¤·ÄµÈ ¹è¿­·Î ÇÕÄ¡±â)
+	//í•©ë³‘ í•¨ìˆ˜ (ë‘ê°œì˜ ì •ë ¬ëœ ë¶€ë¶„ë°°ì—´ì„ í•˜ë‚˜ì˜ ì •ë ¬ëœ ë°°ì—´ë¡œ í•©ì¹˜ê¸°)
 	static void merge(int start, int end) {
 		
 		if((end-start+1) > (n/k)) return;
-		//ÇöÀç Á¤·ÄÁßÀÎ ºÎºĞ¹è¿­ÀÇ Å©±â°¡ k¸íÀÌ Á¤·ÄÇÒ¶§ÀÇ ºÎºĞ¹è¿­ÀÇ Å©±âº¸´Ù Å©´Ù¸é, Á¤·ÄÇÏÁö ¾Ê°í ±×´ë·Î ¸®ÅÏ
+		//í˜„ì¬ ì •ë ¬ì¤‘ì¸ ë¶€ë¶„ë°°ì—´ì˜ í¬ê¸°ê°€ këª…ì´ ì •ë ¬í• ë•Œì˜ ë¶€ë¶„ë°°ì—´ì˜ í¬ê¸°ë³´ë‹¤ í¬ë‹¤ë©´, ì •ë ¬í•˜ì§€ ì•Šê³  ê·¸ëŒ€ë¡œ ë¦¬í„´
 		
 		int mid = (start+end)/2;
 		
-		int k = 0;//tmp¹è¿­ÀÇ Æ÷ÀÎÅÍ
-		int i = start;//¿ŞÂÊ ºÎºĞ¹è¿­ Æ÷ÀÎÅÍ
-		int j = mid+1;//¿À¸¥ÂÊ ºÎºĞ¹è¿­ Æ÷ÀÎÅÍ
+		int k = 0;//tmpë°°ì—´ì˜ í¬ì¸í„°
+		int i = start;//ì™¼ìª½ ë¶€ë¶„ë°°ì—´ í¬ì¸í„°
+		int j = mid+1;//ì˜¤ë¥¸ìª½ ë¶€ë¶„ë°°ì—´ í¬ì¸í„°
 		
 		while(i<=mid && j<=end) {
 			if(arr[i] < arr[j]) tmp[k++] = arr[i++];
@@ -31,17 +31,17 @@ public class Ä¡Å²TOPN_11582 {
 		for(i=start; i<=end; i++) arr[i] = tmp[k++];
 	}
 	
-	//ÇÕº´ Á¤·Ä ÇÔ¼ö
+	//í•©ë³‘ ì •ë ¬ í•¨ìˆ˜
 	static void mergeSort(int start, int end) {
 		
-		if(start==end) return;	//Á¾·áÁ¶°Ç : ¹è¿­ ±æÀÌ°¡ 1
+		if(start==end) return;	//ì¢…ë£Œì¡°ê±´ : ë°°ì—´ ê¸¸ì´ê°€ 1
 		
 		int mid = (start+end)/2;
 		
-		mergeSort(start, mid);	//¿ŞÂÊ ºÎºĞ¹è¿­ Á¤·Ä
-		mergeSort(mid+1, end);	//¿À¸¥ÂÊ ºÎºĞ¹è¿­ Á¤·Ä
+		mergeSort(start, mid);	//ì™¼ìª½ ë¶€ë¶„ë°°ì—´ ì •ë ¬
+		mergeSort(mid+1, end);	//ì˜¤ë¥¸ìª½ ë¶€ë¶„ë°°ì—´ ì •ë ¬
 		
-		merge(start, end);	//µÎ ºÎºĞ¹è¿­À» ÇÕÄ¡±â
+		merge(start, end);	//ë‘ ë¶€ë¶„ë°°ì—´ì„ í•©ì¹˜ê¸°
 
 	}
 
