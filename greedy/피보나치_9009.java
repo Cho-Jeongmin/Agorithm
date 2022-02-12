@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class ÇÇº¸³ªÄ¡_9009 {
+public class í”¼ë³´ë‚˜ì¹˜_9009 {
 
 	public static void main(String[] args) throws IOException {
 
@@ -15,7 +15,7 @@ public class ÇÇº¸³ªÄ¡_9009 {
 		while(t-- > 0) {
 			int n = Integer.parseInt(br.readLine());
 			
-			//ÇÇº¸³ªÄ¡ ¼ö¿­ ±¸ÇÏ±â (nº¸´Ù ÀÛÀº ¼ö±îÁö¸¸)
+			//í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ êµ¬í•˜ê¸° (në³´ë‹¤ ì‘ì€ ìˆ˜ê¹Œì§€ë§Œ)
 			ArrayList<Integer> fivo = new ArrayList<Integer>();
 			fivo.add(0);
 			fivo.add(1);
@@ -29,7 +29,7 @@ public class ÇÇº¸³ªÄ¡_9009 {
 			
 			ArrayList<Integer> ans = new ArrayList<Integer>();
 			
-			//ÇÇº¸³ªÄ¡ ¼ö¿­¿¡¼­ Å«¼öºÎÅÍ n¿¡¼­ »©ÁÖ±â
+			//í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ì—ì„œ í°ìˆ˜ë¶€í„° nì—ì„œ ë¹¼ì£¼ê¸°
 			while(n != 0) {
 				for(int j=fivo.size()-1; j>=0; j--) {
 					if(fivo.get(j) <= n) {
