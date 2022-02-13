@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class °Å¿ï»ó_4583 {
+public class ê±°ìš¸ìƒ_4583 {
 
 	public static void main(String[] args) throws IOException {
 		
@@ -25,7 +25,7 @@ public class °Å¿ï»ó_4583 {
 				else if(ch=='p') ans = 'q'+ans;
 				else if(ch=='q') ans = 'p'+ans;
 				else if(mirror.contains(ch)) ans = ch+ans;
-				else {//°Å¿ï»ó ¹®ÀÚ°¡ ¾Æ´Ò °æ¿ì
+				else {//ê±°ìš¸ìƒ ë¬¸ìê°€ ì•„ë‹ ê²½ìš°
 					valid = false;
 					break;
 				}
