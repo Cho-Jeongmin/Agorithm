@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class °¡Àå±äÁõ°¡ÇÏ´ÂºÎºĞ¼ö¿­_11053 {//LIS(ÃÖÀåÁõ°¡ºÎºĞ¼ö¿­ ¹®Á¦)
+public class ê°€ì¥ê¸´ì¦ê°€í•˜ëŠ”ë¶€ë¶„ìˆ˜ì—´_11053 {//LIS(ìµœì¥ì¦ê°€ë¶€ë¶„ìˆ˜ì—´ ë¬¸ì œ)
 
 	public static void main(String[] args) throws IOException {
 		
@@ -17,20 +17,20 @@ public class °¡Àå±äÁõ°¡ÇÏ´ÂºÎºĞ¼ö¿­_11053 {//LIS(ÃÖÀåÁõ°¡ºÎºĞ¼ö¿­ ¹®Á¦)
 			input[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		//Ç®ÀÌ
-		int dp[] = new int[n];//dp[i]: 0~i¹øÂ° ¼ö·Î¸¸ ÀÌ·ç¾îÁø LISÀÇ ±æÀÌ
+		//í’€ì´
+		int dp[] = new int[n];//dp[i]: 0~ië²ˆì§¸ ìˆ˜ë¡œë§Œ ì´ë£¨ì–´ì§„ LISì˜ ê¸¸ì´
 		
 		for(int i=0; i<n; i++) {
-			dp[i] = 1;//ÃÊ±âÈ­.(°¡Àå ÀÛÀº ºÎºĞ¼ö¿­ÀÇ ±æÀÌ´Â Ç×»ó 1)
+			dp[i] = 1;//ì´ˆê¸°í™”.(ê°€ì¥ ì‘ì€ ë¶€ë¶„ìˆ˜ì—´ì˜ ê¸¸ì´ëŠ” í•­ìƒ 1)
 
-			for(int j=0; j<i; j++) {//iº¸´Ù ¾Õ¿¡ ÀÖ´Â ¼öµé Áß
-				if(input[j] < input[i]) { //i¹øÂ° ¼öº¸´Ù ´õ ÀÛÀº j¹øÂ° ¼ö¿¡ ´ëÇØ
-					dp[i] = Math.max(dp[i], dp[j]+1); //±âÁ¸ dp[i]°ª°ú dp[j]+1Áß ´õ Å«°ªÀ¸·Î °»½Å
+			for(int j=0; j<i; j++) {//ië³´ë‹¤ ì•ì— ìˆëŠ” ìˆ˜ë“¤ ì¤‘
+				if(input[j] < input[i]) { //ië²ˆì§¸ ìˆ˜ë³´ë‹¤ ë” ì‘ì€ jë²ˆì§¸ ìˆ˜ì— ëŒ€í•´
+					dp[i] = Math.max(dp[i], dp[j]+1); //ê¸°ì¡´ dp[i]ê°’ê³¼ dp[j]+1ì¤‘ ë” í°ê°’ìœ¼ë¡œ ê°±ì‹ 
 				}
 			}
 		}
 		
-		//dpÁß ÃÖ´ñ°ª Ã£±â
+		//dpì¤‘ ìµœëŒ“ê°’ ì°¾ê¸°
 		int max = 0;
 		for(int i=0; i<n; i++) {
 			max = Math.max(max, dp[i]);
