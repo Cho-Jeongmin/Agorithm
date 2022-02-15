@@ -1,19 +1,19 @@
 import java.util.*;
 import java.io.*;
 
-public class È¿À²ÀûÀÎÇØÅ·_1325 {//ÀÌ°Å ÀÚ¹Ù dfs·Î Ç®¸é ½Ã°£ÃÊ°ú ³²...¤Ğ
+public class íš¨ìœ¨ì ì¸í•´í‚¹_1325 {//ì´ê±° ìë°” dfsë¡œ í’€ë©´ ì‹œê°„ì´ˆê³¼ ë‚¨...ã… 
    
-   static int n;//³ëµå °³¼ö
-   static ArrayList<Integer> graph[];//ÀÎÁ¢¸®½ºÆ®
-   static boolean visited[];//³ëµå ¹æ¹®¿©ºÎ Ã¼Å©
-   static int cnt = 0;//ÇØÅ· °¡´ÉÇÑ ÄÄÇ»ÅÍ ¼ö
+   static int n;//ë…¸ë“œ ê°œìˆ˜
+   static ArrayList<Integer> graph[];//ì¸ì ‘ë¦¬ìŠ¤íŠ¸
+   static boolean visited[];//ë…¸ë“œ ë°©ë¬¸ì—¬ë¶€ ì²´í¬
+   static int cnt = 0;//í•´í‚¹ ê°€ëŠ¥í•œ ì»´í“¨í„° ìˆ˜
 
    static void dfs(int cur) {
-      visited[cur] = true;//¹æ¹® Ã³¸®
-      cnt++;//ÇØÅ·µÈ ÄÄÇ»ÅÍ¼ö Ä«¿îÆ®
-      for(int next : graph[cur]) {//ÇöÀç³ëµåÀÇ ÀÎÁ¢³ëµå¸¦ Å½»öÇÏ¸é¼­
-         if(!visited[next]) {//ÀÎÁ¢³ëµå¿¡ ¹æ¹®ÇÑÀûÀÌ ¾øÀ¸¸é
-            dfs(next);//¹æ¹®
+      visited[cur] = true;//ë°©ë¬¸ ì²˜ë¦¬
+      cnt++;//í•´í‚¹ëœ ì»´í“¨í„°ìˆ˜ ì¹´ìš´íŠ¸
+      for(int next : graph[cur]) {//í˜„ì¬ë…¸ë“œì˜ ì¸ì ‘ë…¸ë“œë¥¼ íƒìƒ‰í•˜ë©´ì„œ
+         if(!visited[next]) {//ì¸ì ‘ë…¸ë“œì— ë°©ë¬¸í•œì ì´ ì—†ìœ¼ë©´
+            dfs(next);//ë°©ë¬¸
          }
       }
    }
@@ -30,20 +30,20 @@ public class È¿À²ÀûÀÎÇØÅ·_1325 {//ÀÌ°Å ÀÚ¹Ù dfs·Î Ç®¸é ½Ã°£ÃÊ°ú ³²...¤Ğ
        graph = new ArrayList[n];
        visited = new boolean[n];
        
-      //±×·¡ÇÁ »ı¼º
+      //ê·¸ë˜í”„ ìƒì„±
       for(int i=0; i<n; i++) {
          graph[i] = new ArrayList<Integer>();
       }
       
-      //±×·¡ÇÁ ÀÔ·Â
+      //ê·¸ë˜í”„ ì…ë ¥
       for(int i=0; i<m; i++) {
          st = new StringTokenizer(br.readLine());
          int a = Integer.parseInt(st.nextToken())-1;
          int b = Integer.parseInt(st.nextToken())-1;
-         graph[b].add(a);//b¸¦ ÇØÅ·ÇÏ¸é a¸¦ ÇØÅ·ÇÒ ¼ö ÀÖÀ½.
+         graph[b].add(a);//bë¥¼ í•´í‚¹í•˜ë©´ aë¥¼ í•´í‚¹í•  ìˆ˜ ìˆìŒ.
       }
 
-      //Ç®ÀÌ: ¸ğµç ³ëµå¿¡ ´ëÇØ dfs ¼öÇà
+      //í’€ì´: ëª¨ë“  ë…¸ë“œì— ëŒ€í•´ dfs ìˆ˜í–‰
       int max = 0;
       int arr[] = new int[n];
       for(int i=0; i<n; i++) {
