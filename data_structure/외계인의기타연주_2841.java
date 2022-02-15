@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class ¿Ü°èÀÎÀÇ±âÅ¸¿¬ÁÖ_2841 {
+public class Â¿ÃœÂ°Ã¨Ã€ÃÃ€Ã‡Â±Ã¢Ã…Â¸Â¿Â¬ÃÃ–_2841 {
 
 	public static void main(String[] args) throws IOException {
 
