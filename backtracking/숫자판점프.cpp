@@ -5,32 +5,32 @@ using namespace std;
 
 int dy[4] = { 0, -1, 0 ,1 };
 int dx[4] = { -1, 0, 1, 0 };
-set<int> s;//ÁıÇÕ s (Áßº¹ Á¦°Å¿ë)
+set<int> s;//ì§‘í•© s (ì¤‘ë³µ ì œê±°ìš©)
 
 void backtracking(int y, int x, int level, int result, vector<vector<int>>& board) {
 
-	if (level == 6) {//Å»ÃâÁ¶°Ç
-		s.insert(result);//ÁıÇÕ s¿¡ 6ÀÚ¸® ¼ıÀÚ »ğÀÔ
+	if (level == 6) {//íƒˆì¶œì¡°ê±´
+		s.insert(result);//ì§‘í•© sì— 6ìë¦¬ ìˆ«ì ì‚½ì…
 		return;
 	}
 
 
-	for (int i = 0; i < 4; i++) {//»óÇÏÁÂ¿ì
+	for (int i = 0; i < 4; i++) {//ìƒí•˜ì¢Œìš°
 		int ny = y + dy[i];
 		int nx = x + dx[i];
 
-		if (ny < 0 || nx < 0 || ny >= 5 || nx >= 5) continue;//¹è¿­ ¹üÀ§ ¹ş¾î³².
+		if (ny < 0 || nx < 0 || ny >= 5 || nx >= 5) continue;//ë°°ì—´ ë²”ìœ„ ë²—ì–´ë‚¨.
 
-		backtracking(ny, nx, level + 1, result*10 + board[y][x], board);//Àç±ÍÈ£Ãâ
+		backtracking(ny, nx, level + 1, result*10 + board[y][x], board);//ì¬ê·€í˜¸ì¶œ
 	}
 
 }
 
 
 int solution(vector<vector<int>>& board) {
-	int answer = 0; //´Ù¸¥ Á¶ÇÕ °³¼ö
+	int answer = 0; //ë‹¤ë¥¸ ì¡°í•© ê°œìˆ˜
 
-	//¸ğµç Á¡¿¡ ´ëÇØ ¹éÆ®·¡Å· ½ÇÇà
+	//ëª¨ë“  ì ì— ëŒ€í•´ ë°±íŠ¸ë˜í‚¹ ì‹¤í–‰
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++) {
 			backtracking(i, j, 0, 0, board);
@@ -47,10 +47,10 @@ int main() {
 	vector<vector<int>> board;
 	int num, result;
 
-	//¼ıÀÚÆÇ ÃÊ±âÈ­
+	//ìˆ«ìíŒ ì´ˆê¸°í™”
 	board.assign(5, vector<int>(5, 0));
 
-	//¼ıÀÚÆÇ ÀÔ·Â
+	//ìˆ«ìíŒ ì…ë ¥
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++) {
 			cin >> num;
@@ -59,10 +59,10 @@ int main() {
 		}
 	}
 
-	//¸¸µé ¼ö ÀÖ´Â ¼­·Î ´Ù¸¥ ¿©¼¸ ÀÚ¸®ÀÇ ¼öµéÀÇ °³¼ö ±¸ÇÏ±â
+	//ë§Œë“¤ ìˆ˜ ìˆëŠ” ì„œë¡œ ë‹¤ë¥¸ ì—¬ì„¯ ìë¦¬ì˜ ìˆ˜ë“¤ì˜ ê°œìˆ˜ êµ¬í•˜ê¸°
 	result = solution(board);
 
-	//Ãâ·Â
+	//ì¶œë ¥
 	cout << result;
 
 }
