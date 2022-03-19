@@ -6,24 +6,24 @@
 
 using namespace std;
 
-bool visited[101][101];//¹æ¹®¿©ºÎ¹è¿­
-int area = 0;//³ĞÀÌ
+bool visited[101][101];//ë°©ë¬¸ì—¬ë¶€ë°°ì—´
+int area = 0;//ë„“ì´
 int dy[4] = { 0, -1, 0, 1 };
 int dx[4] = { -1, 0, 1, 0 };
 
 void dfs(int m, int n, int y, int x, vector<vector<int>> picture) {
-    visited[y][x] = true;//¹æ¹®Ç¥½Ã
-    area++;//³ĞÀÌ + 1
+    visited[y][x] = true;//ë°©ë¬¸í‘œì‹œ
+    area++;//ë„“ì´ + 1
 
     for (int i = 0; i < 4; i++) {
         int ny = y + dy[i];
         int nx = x + dx[i];
 
-        if (ny < 0 || nx < 0 || ny >= m || nx >= n) continue;//¹è¿­ ¹üÀ§ ¹ş¾î³²
-        if (visited[ny][nx]) continue;//ÀÌ¹Ì ¹æ¹®ÇÔ
-        if (picture[y][x] != picture[ny][nx]) continue;//´Ù¸¥ ¿µ¿ªÀÓ
+        if (ny < 0 || nx < 0 || ny >= m || nx >= n) continue;//ë°°ì—´ ë²”ìœ„ ë²—ì–´ë‚¨
+        if (visited[ny][nx]) continue;//ì´ë¯¸ ë°©ë¬¸í•¨
+        if (picture[y][x] != picture[ny][nx]) continue;//ë‹¤ë¥¸ ì˜ì—­ì„
 
-        dfs(m, n, ny, nx, picture);//Àç±ÍÈ£Ãâ
+        dfs(m, n, ny, nx, picture);//ì¬ê·€í˜¸ì¶œ
     }
 
 }
@@ -31,18 +31,18 @@ void dfs(int m, int n, int y, int x, vector<vector<int>> picture) {
 vector<int> solution(int m, int n, vector<vector<int>> picture) {
 	vector<int> answer(2);
 
-    int cnt = 0;//¿µ¿ª °³¼ö
-    int max_area = 0;//ÃÖ´ë ³ĞÀÌ
+    int cnt = 0;//ì˜ì—­ ê°œìˆ˜
+    int max_area = 0;//ìµœëŒ€ ë„“ì´
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            if (picture[i][j]==0) {//0ÀÌ ½áÀÖ´Â ¿µ¿ªÀº »öÄ¥ ¾ÈÇÏ¹Ç·Î
-                visited[i][j] = true;//¹Ì¸® visited Ã³¸®
+            if (picture[i][j]==0) {//0ì´ ì¨ìˆëŠ” ì˜ì—­ì€ ìƒ‰ì¹  ì•ˆí•˜ë¯€ë¡œ
+                visited[i][j] = true;//ë¯¸ë¦¬ visited ì²˜ë¦¬
             }
         }
     }
 
-    //¸ğµç ¹æ¹®ÇÏÁö ¾ÊÀº Á¡¿¡ ´ëÇØ dfs ¼öÇà.
+    //ëª¨ë“  ë°©ë¬¸í•˜ì§€ ì•Šì€ ì ì— ëŒ€í•´ dfs ìˆ˜í–‰.
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             if (!visited[i][j]) {
