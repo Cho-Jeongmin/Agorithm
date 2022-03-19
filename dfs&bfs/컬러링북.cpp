@@ -2,60 +2,52 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
-#include <limits.h>
-
 using namespace std;
 
-bool visited[101][101];//ë°©ë¬¸ì—¬ë¶€ë°°ì—´
-int area = 0;//ë„“ì´
-int dy[4] = { 0, -1, 0, 1 };
-int dx[4] = { -1, 0, 1, 0 };
+int dy[4] = { -1, 1, 0, 0 };
+int dx[4] = { 0, 0, -1, 1 };
 
-void dfs(int m, int n, int y, int x, vector<vector<int>> picture) {
-    visited[y][x] = true;//ë°©ë¬¸í‘œì‹œ
-    area++;//ë„“ì´ + 1
+bool visited[101][101];
+int area = 0;
 
-    for (int i = 0; i < 4; i++) {
-        int ny = y + dy[i];
-        int nx = x + dx[i];
+void dfs(int y, int x, int m, int n, vector<vector<int>> picture) {
+	visited[y][x] = true;
+	area++;
 
-        if (ny < 0 || nx < 0 || ny >= m || nx >= n) continue;//ë°°ì—´ ë²”ìœ„ ë²—ì–´ë‚¨
-        if (visited[ny][nx]) continue;//ì´ë¯¸ ë°©ë¬¸í•¨
-        if (picture[y][x] != picture[ny][nx]) continue;//ë‹¤ë¥¸ ì˜ì—­ì„
+	for (int i = 0; i < 4; i++) {
+		int ny = y + dy[i];//ÀÎÁ¢ ÁÂÇ¥
+		int nx = x + dx[i];
 
-        dfs(m, n, ny, nx, picture);//ì¬ê·€í˜¸ì¶œ
-    }
+		//¹è¿­ ¹üÀ§ ¹ş¾î³ª°Å³ª ÀÌ¹Ì ¹æ¹®ÇÑ Á¡
+		if (ny < 0 || nx < 0 || ny >= m || nx >= n || visited[ny][nx]) continue;
+		//´Ù¸¥ ¿µ¿ªÀÎ Á¡
+		if (picture[ny][nx] != picture[y][x]) continue;
 
+		dfs(ny, nx, m, n, picture);//Àç±Í¹æ¹®
+	}
 }
 
 vector<int> solution(int m, int n, vector<vector<int>> picture) {
 	vector<int> answer(2);
 
-    int cnt = 0;//ì˜ì—­ ê°œìˆ˜
-    int max_area = 0;//ìµœëŒ€ ë„“ì´
+	int cnt = 0;//¿µ¿ª °³¼ö
+	int max_area = 0;//ÃÖ´ë ³ĞÀÌ
 
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            if (picture[i][j]==0) {//0ì´ ì¨ìˆëŠ” ì˜ì—­ì€ ìƒ‰ì¹  ì•ˆí•˜ë¯€ë¡œ
-                visited[i][j] = true;//ë¯¸ë¦¬ visited ì²˜ë¦¬
-            }
-        }
-    }
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (picture[i][j] == 0) continue;//»öÄ¥ÇÏÁö ¾Ê´Â ¿µ¿ª
 
-    //ëª¨ë“  ë°©ë¬¸í•˜ì§€ ì•Šì€ ì ì— ëŒ€í•´ dfs ìˆ˜í–‰.
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            if (!visited[i][j]) {
-                area = 0;
-                dfs(m, n, i, j, picture);
-                max_area = max(max_area, area);
-                cnt++;
-            }
-        }
-    }
+			if (!visited[i][j]) {//¹æ¹®ÇÏÁö ¾ÊÀº Á¡ÀÌ¸é
+				area = 0;//¿µ¿ª ³ĞÀÌ ÃÊ±âÈ­
+				dfs(i, j, m, n, picture);//ÇØ´ç Á¡ÀÌ Æ÷ÇÔµÈ ¿µ¿ª ÀüÃ¼ ¹æ¹®
+				cnt++;//¿µ¿ª °³¼ö Ä«¿îÆ®
+				max_area = max(max_area, area);//ÃÖ´ë ³ĞÀÌ °»½Å
+			}
+		}
+	}
 
-    answer[0] = cnt;
-    answer[1] = max_area;
+	answer[0] = cnt;
+	answer[1] = max_area;
 
 	return answer;
 }
