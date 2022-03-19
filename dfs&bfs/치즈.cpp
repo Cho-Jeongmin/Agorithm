@@ -8,35 +8,35 @@ int dy[4] = { 0, -1, 0, 1 };
 int dx[4] = { -1, 0, 1, 0 };
 
 void dfs(int y, int x, int n, int m, vector<vector<int>>& b) {
-    b[y][x] = 2;//¿ÜºÎ°ø±â Ç¥½Ã
-    visited[y][x] = true;//¹æ¹®Ç¥½Ã
+    b[y][x] = 2;//ì™¸ë¶€ê³µê¸° í‘œì‹œ
+    visited[y][x] = true;//ë°©ë¬¸í‘œì‹œ
     
     for (int i = 0; i < 4; i++) {
-        //ÀÎÁ¢ ÁÂÇ¥
+        //ì¸ì ‘ ì¢Œí‘œ
         int ny = y + dy[i];
         int nx = x + dx[i];
 
         if (ny >= 0 && nx >= 0 && ny < n && nx < m && !visited[ny][nx] && (b[ny][nx] == 0 || b[ny][nx] == 2)) {
-            dfs(ny, nx, n, m, b);//¹æ¹®
+            dfs(ny, nx, n, m, b);//ë°©ë¬¸
         }
     }
 }
 
 int solution(int n, int m, vector<vector<int>>& b) {
-	int answer = 0; //½Ã°£
+	int answer = 0; //ì‹œê°„
 
     int time = 0;
 
     while (true) {
 
-        //visited ¹è¿­ ÃÊ±âÈ­
+        //visited ë°°ì—´ ì´ˆê¸°í™”
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 visited[i][j] = false;
             }
         }
 
-        dfs(0, 0, n, m, b);//¿ÜºÎ°ø±â 2·Î Ç¥½Ã
+        dfs(0, 0, n, m, b);//ì™¸ë¶€ê³µê¸° 2ë¡œ í‘œì‹œ
 
         /*
         cout << time << endl;
@@ -49,25 +49,25 @@ int solution(int n, int m, vector<vector<int>>& b) {
         cout << endl;
         */
 
-        bool cheese = false;//Ä¡Áî Á¸Àç ¿©ºÎ
+        bool cheese = false;//ì¹˜ì¦ˆ ì¡´ì¬ ì—¬ë¶€
 
-        //Ä¡Áî ¾ø¾Ö±â(0À¸·Î Ç¥½Ã)
+        //ì¹˜ì¦ˆ ì—†ì• ê¸°(0ìœ¼ë¡œ í‘œì‹œ)
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (b[i][j] == 1) {//Ä¡ÁîÀÌ¸é
+                if (b[i][j] == 1) {//ì¹˜ì¦ˆì´ë©´
                     cheese = true;
-                    int cnt = 0;//¸Â´êÀº ¿ÜºÎ°ø±â Ä«¿îÆ®
+                    int cnt = 0;//ë§ë‹¿ì€ ì™¸ë¶€ê³µê¸° ì¹´ìš´íŠ¸
                     for (int k = 0; k < 4; k++) {
-                        //ÀÎÁ¢ÁÂÇ¥
+                        //ì¸ì ‘ì¢Œí‘œ
                         int ny = i + dy[k];
                         int nx = j + dx[k];
-                        //¹è¿­ ¹üÀ§ ¾È¹ş¾î³ª°í ¿ÜºÎ°ø±âÀÌ¸é
+                        //ë°°ì—´ ë²”ìœ„ ì•ˆë²—ì–´ë‚˜ê³  ì™¸ë¶€ê³µê¸°ì´ë©´
                         if (ny >= 0 && nx >= 0 && ny < n && nx < m && b[ny][nx] == 2) {
-                            cnt++;//¿ÜºÎ°ø±â Ä«¿îÆ®
+                            cnt++;//ì™¸ë¶€ê³µê¸° ì¹´ìš´íŠ¸
                         }
                     }
-                    if (cnt >= 2) {//¸Â´êÀº ¿ÜºÎ°ø±â°¡ 2°³ ÀÌ»óÀÌ¸é
-                        b[i][j] = 0;//Ä¡Áî¾ø¾Ö±â
+                    if (cnt >= 2) {//ë§ë‹¿ì€ ì™¸ë¶€ê³µê¸°ê°€ 2ê°œ ì´ìƒì´ë©´
+                        b[i][j] = 0;//ì¹˜ì¦ˆì—†ì• ê¸°
                     }
                 }
             }
