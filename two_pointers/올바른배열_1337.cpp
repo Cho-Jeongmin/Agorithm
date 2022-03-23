@@ -18,7 +18,7 @@ int main(void) {
 		cin >> arr[i];
 	}
 
-	sort(arr, arr + N);//¿À¸§Â÷¼ø Á¤·Ä
+	sort(arr, arr + N);//Â¿Ã€Â¸Â§Ã‚Ã·Â¼Ã¸ ÃÂ¤Â·Ã„
 
 	int cnt = 0;
 	int min_cnt = INT_MAX;
